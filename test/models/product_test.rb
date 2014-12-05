@@ -61,4 +61,17 @@ class ProductTest < ActiveSupport::TestCase
                  product.errors[:title]
   end
 
+  test "title length must be reater or equal then 10 chars" do
+    product = Product.new(title: "aaaaaaaaa",
+                          description: "yyy",
+                          price: 1,
+                          image_url: "freg.gif")
+    assert product.invalid?, "title shouldn't be valid"
+
+    product.title = "aaaaaaaaaa"
+    assert product.valid?, "title shouldn't be invalid"
+  end
+
+
+
 end
