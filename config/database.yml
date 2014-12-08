@@ -17,17 +17,16 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  host: localhost
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
-  host: localhost
-  username: depot
-  password: rails
 
 development:
   <<: *default
   database: depot_development
-
+  username: depot
+  password: rails
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -62,6 +61,8 @@ development:
 test:
   <<: *default
   database: depot_test
+  username: depot
+  password: rails
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -86,4 +87,4 @@ production:
   <<: *default
   database: depot_production
   username: depot
-  password: <%= ENV['DEPOT_DATABASE_PASSWORD'] %>
+  password: rails #<%= ENV['DEPOT_DATABASE_PASSWORD'] %>
