@@ -7,9 +7,10 @@
 # Visit http://www.pragmaticprogrammer.com/titles/rails4 for more book information.
 #---
 class StoreController < ApplicationController
-  include SessionCounter
+  include SessionCounter, CurrentCart
 
   before_action :increment_counter, only: [:index]
+  before_action :set_cart
 
   def index
     @products = Product.order(:title)
